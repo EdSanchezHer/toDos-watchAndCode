@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Practical JS</title>
+  </head>
+
+  <body>
+    <button id="toggle-all-button">Toggle All</button>
+    <button id="add-button">Add</button>
+    <input id="add-input">
+    <button id="edit-button">Edit</button>
+    <input id="edit-position-input">
+    <input id="edit-text-input">
+    <!-- <button id="remove-button">Remove</button>
+    <input id="remove-position-input"> -->
+    <button id="toggle-button">Toggle</button>
+    <input id="toggle-position-input">
+
+    <ul id="todos-ul">
+      
+    </ul>
+
+    <script>
+      var todos = [
+        {todosText: 'Item 1', completed: false},
+        {todosText: 'Item 2', completed: false},
+        {todosText: 'Item 3', completed: false}
+      ];
+
+      displayTodos();
+
+      function add() {
+        var initialTodoText = addInput.value;
+        todos.push({todosText: initialTodoText, completed: false});
+        addInput.value = '';
+        displayTodos();
+      }
+
+      function edit() {
+        var position = editPositionInput.value;
+        var newTodoText = editTextInput.value;
+        todos[position].todosText = newTodoText;
+        editPositionInput.value = '';
+        editTextInput.value = '';
+        displayTodos();
+      }
+
+      function remove(event) {
+        var position = event.target.id;
+        todos.splice(position, 1);
+        displayTodos();
+      }
+
+      function toggle() { 
+        var position = toggleInput.value;
+        if (todos[position].completed === true) {
+          todos[position].completed = false;
+        } else {
+          todos[position].completed = true;
+        }
+        toggleInput.value = '';
+        displayTodos();
+      }
+
+      function displayTodos () {
+        var todosUl = document.getElementById('todos-ul');
+        todosUl.innerHTML = '';
+        for (var i = 0; i < todos.length; i++) {
+          var todoLi = document.createElement('li');
+
+          if (todos[i].completed) {
+            todoLi.innerText = '[X] ' + todos[i].todosText;
+          } else {
+            todoLi.innerText = '[ ] ' + todos[i].todosText;
+          }
+
+          var removeButton = document.createElement('button');
+          removeButton.innerText = 'Remove';
+          removeButton.addEventListener('click', remove);
+          removeButton.id = i;
+
+          todoLi.appendChild(removeButton);
+          todosUl.appendChild(todoLi);
+        }
+      }
+
+      function toggleAll () {
+        var allCompleted = true;
+
+        for (var i = 0; i < todos.length; i++) {
+          if (todos[i].completed && allCompleted) {
+            allCompleted = true;
+          } else allCompleted = false;
+        }
+
+        if (allCompleted) {
+          for (var i = 0; i < todos.length; i++) {
+            todos[i].completed = false;
+          }
+        } else {
+          for (var i = 0; i < todos.length; i++) {
+            todos[i].completed = true;
+          }
+        }
+        
+        displayTodos();
+        
+      }
+      
+
+      var displayTodosButton = document.getElementById('display-todos-button');
+      var toggleAllButton = document.getElementById('toggle-all-button');
+      var addButton = document.getElementById('add-button');
+      var addInput = document.getElementById('add-input');
+      var editButton = document.getElementById('edit-button');
+      var editPositionInput = document.getElementById('edit-position-input');
+      var editTextInput = document.getElementById('edit-text-input');
+      // var removeButton = document.getElementById('remove-button');
+      // var removeInput = document.getElementById('remove-position-input');
+      var toggleButton = document.getElementById('toggle-button');
+      var toggleInput = document.getElementById('toggle-position-input');
+
+      toggleAllButton.addEventListener('click', toggleAll);
+      addButton.addEventListener('click', add);
+      editButton.addEventListener('click', edit);
+      // removeButton.addEventListener('click', remove);
+      toggleButton.addEventListener('click', toggle);
+
+    </script>
+  </body>
+</html>
