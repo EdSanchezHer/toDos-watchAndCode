@@ -13,8 +13,7 @@
     <input id="edit-text-input">
     <!-- <button id="remove-button">Remove</button>
     <input id="remove-position-input"> -->
-    <button id="toggle-button">Toggle</button>
-    <input id="toggle-position-input">
+  
 
     <ul id="todos-ul">
       
@@ -51,14 +50,13 @@
         displayTodos();
       }
 
-      function toggle() { 
-        var position = toggleInput.value;
+      function toggle(event) { 
+        var position = event.target.id;
         if (todos[position].completed === true) {
           todos[position].completed = false;
         } else {
           todos[position].completed = true;
         }
-        toggleInput.value = '';
         displayTodos();
       }
 
@@ -79,6 +77,12 @@
           removeButton.addEventListener('click', remove);
           removeButton.id = i;
 
+          var toggleButton = document.createElement('button');
+          toggleButton.innerText = 'Toggle';
+          toggleButton.addEventListener('click', toggle);
+          toggleButton.id = i;
+
+          todoLi.appendChild(toggleButton);
           todoLi.appendChild(removeButton);
           todosUl.appendChild(todoLi);
         }
@@ -115,16 +119,12 @@
       var editButton = document.getElementById('edit-button');
       var editPositionInput = document.getElementById('edit-position-input');
       var editTextInput = document.getElementById('edit-text-input');
-      // var removeButton = document.getElementById('remove-button');
-      // var removeInput = document.getElementById('remove-position-input');
       var toggleButton = document.getElementById('toggle-button');
       var toggleInput = document.getElementById('toggle-position-input');
 
       toggleAllButton.addEventListener('click', toggleAll);
       addButton.addEventListener('click', add);
       editButton.addEventListener('click', edit);
-      // removeButton.addEventListener('click', remove);
-      toggleButton.addEventListener('click', toggle);
 
     </script>
   </body>
