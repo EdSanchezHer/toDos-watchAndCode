@@ -45,13 +45,14 @@
       }
 
       function remove(event) {
-        var position = event.target.id;
+        var position = event.target.id.slice(7);
         todos.splice(position, 1);
         displayTodos();
       }
 
       function toggle(event) { 
-        var position = event.target.id;
+        var position = event.target.id.slice(7);
+        console.log(position);
         if (todos[position].completed === true) {
           todos[position].completed = false;
         } else {
@@ -75,12 +76,12 @@
           var removeButton = document.createElement('button');
           removeButton.innerText = 'Remove';
           removeButton.addEventListener('click', remove);
-          removeButton.id = i;
+          removeButton.id = + 'remove-' + i;
 
           var toggleButton = document.createElement('button');
           toggleButton.innerText = 'Toggle';
           toggleButton.addEventListener('click', toggle);
-          toggleButton.id = i;
+          toggleButton.id = 'toggle-' + i;
 
           todoLi.appendChild(toggleButton);
           todoLi.appendChild(removeButton);
@@ -119,7 +120,6 @@
       var editButton = document.getElementById('edit-button');
       var editPositionInput = document.getElementById('edit-position-input');
       var editTextInput = document.getElementById('edit-text-input');
-      var toggleButton = document.getElementById('toggle-button');
       var toggleInput = document.getElementById('toggle-position-input');
 
       toggleAllButton.addEventListener('click', toggleAll);

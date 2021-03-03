@@ -1,0 +1,24 @@
+[33mcommit dbd29ed9d9e328c022cb63bdca8d24505547596d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 48b7642 bc34458
+Author: Eduardo <eduardosh1105@gmail.com>
+Date:   Tue Mar 2 15:57:39 2021 -0700
+
+    Merge branch 'main' of https://github.com/EdSanchezHer/toDos-watchAndCode
+
+[33mcommit 48b764209044a2a3b0e954ebb7aeade111693b58[m
+Author: Eduardo <eduardosh1105@gmail.com>
+Date:   Tue Mar 2 15:48:27 2021 -0700
+
+    Added a toggle button for each todo and made them functional.  Removed unnecessary code.
+
+[33mcommit bc344584d7a02dadefa818efe2ef50af1a74e2bf[m
+Author: Eduardo Sanchez <eduardo.hernandez1105@gmail.com>
+Date:   Sun Feb 28 08:01:25 2021 -0800
+
+    Create README.md
+
+[33mcommit a5ad9e24e7dee77b26432c542f0aeca70878cb8c[m
+Author: Eduardo <eduardosh1105@gmail.com>
+Date:   Sun Feb 28 08:57:22 2021 -0700
+
+    First Commit
